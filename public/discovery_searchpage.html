@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <title>Artist Finds Application - Search Artists</title>
+    <link rel="stylesheet" href="discoveryapp.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.css"
+    />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+  </head>
+
+  <body>
+    <main class="page-screen">
+      <section class="page-content">
+        <header class="page-header">
+          <a class="emoji-icon" href="discovery_homepage.html">🎧</a>
+          <div>
+            <h1>Find Similar Artists</h1>
+          </div>
+        </header>
+
+        <section class="search-container">
+          <div class="search-box">
+            <input
+              type="text"
+              id="artist-search"
+              placeholder="Search for an artist..."
+            />
+            <button id="search-button">Search</button>
+          </div>
+
+          <div class="filters-container">
+            <div class="filter-box">
+              <h3>Total Listeners</h3>
+              <div id="listeners-slider"></div>
+              <p id="listeners-value">0</p>
+            </div>
+
+            <div class="filter-box">
+              <h3>Play Count</h3>
+              <div id="playcount-slider"></div>
+              <p id="playcount-value">0</p>
+            </div>
+          </div>
+
+          <section class="carousel-section">
+            <h2>Similar Artists</h2>
+
+            <div class="swiper artistSwiper">
+              <div class="swiper-wrapper" id="artist-carousel">
+                <!-- API artists inserted here -->
+              </div>
+
+              <div class="swiper-button-next"></div>
+              <div class="swiper-button-prev"></div>
+              <div class="swiper-pagination"></div>
+            </div>
+          </section>
+        </section>
+      </section>
+
+      <nav>
+        <div class="button-row">
+          <ul>
+            <li><a href="discovery_homepage.html">Home</a></li>
+            <li><a href="discovery_searchpage.html">Search</a></li>
+            <li><a href="discovery_favoritespage.html">Favorites</a></li>
+            <li><a href="discovery_aboutpage.html">About</a></li>
+            <li><a href="discovery_helppage.html">Help</a></li>
+          </ul>
+        </div>
+      </nav>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/nouislider@15.7.0/dist/nouislider.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="discovery.js"></script>
+  </body>
+</html>

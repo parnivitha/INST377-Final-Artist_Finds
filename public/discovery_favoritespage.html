@@ -1,0 +1,106 @@
+<html>
+  <head>
+    <title>Artist Finds Application - Favorites</title>
+    <link rel="stylesheet" href="discoveryapp.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.css"
+    />
+  </head>
+
+  <body>
+    <main class="page-screen">
+      <header class="page-header">
+        <a class="emoji-icon" href="discovery_homepage.html">🎧</a>
+        <div>
+          <h1>Your Favorite Artists</h1>
+        </div>
+      </header>
+
+      <section class="favorites-scroll-box" data-simplebar>
+        <div id="favorites-container"></div>
+      </section>
+
+      <nav>
+        <div class="button-row">
+          <ul>
+            <li><a href="discovery_homepage.html">Home</a></li>
+            <li><a href="discovery_searchpage.html">Search</a></li>
+            <li><a href="discovery_favoritespage.html">Favorites</a></li>
+            <li><a href="discovery_aboutpage.html">About</a></li>
+            <li><a href="discovery_helppage.html">Help</a></li>
+          </ul>
+        </div>
+      </nav>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/simplebar@latest/dist/simplebar.min.js"></script>
+
+    <script>
+      const favoritesContainer = document.getElementById("favorites-container");
+
+      async function loadFavorites() {
+        try {
+          favoritesContainer.innerHTML = `
+            <div class="content-card favorite-artist-card">
+              <p>Loading favorite artists...</p>
+            </div>
+          `;
+
+          const response = await fetch("/api/favorite-artists");
+          const favorites = await response.json();
+
+          if (!response.ok) {
+            throw new Error(favorites.error || "Could not load favorites.");
+          }
+
+          displayFavorites(favorites);
+        } catch (error) {
+          console.error(error);
+
+          favoritesContainer.innerHTML = `
+            <div class="content-card favorite-artist-card">
+              <h2>Could not load favorites</h2>
+              <p>Please try again later.</p>
+            </div>
+          `;
+        }
+      }
+
+      function displayFavorites(favorites) {
+        favoritesContainer.innerHTML = "";
+
+        if (!favorites || favorites.length === 0) {
+          favoritesContainer.innerHTML = `
+            <div class="content-card favorite-artist-card">
+              <h2>No favorites yet</h2>
+              <p>Go to the Search page and heart an artist to save them here.</p>
+            </div>
+          `;
+          return;
+        }
+
+        favorites.forEach((artist) => {
+          const savedDate = new Date(artist.date_time_saved).toLocaleString();
+
+          favoritesContainer.innerHTML += `
+            <div class="content-card favorite-artist-card">
+              <h2>${artist.artist_name}</h2>
+
+              <p><strong>Genres:</strong> ${artist.genres.join(", ")}</p>
+
+              <p><strong>Saved:</strong> ${savedDate}</p>
+
+              <a href="${artist.lastfm_link}" target="_blank">
+                View on Last.fm
+              </a>
+            </div>
+          `;
+        });
+      }
+
+      loadFavorites();
+    </script>
+  </body>
+</html>
