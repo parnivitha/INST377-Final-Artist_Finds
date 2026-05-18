@@ -24,7 +24,6 @@ It is meant for Windows macOS, and Linux. The application can also work on mobil
 
 Future developers can use this manual to install, configure, run, and continue development of the Artist Finds application.
 
-[Jump to Developer Manual](#developer-manual)
 ---
 
 # Installation Instructions
