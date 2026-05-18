@@ -24,7 +24,7 @@ It is meant for Windows macOS, and Linux. The application can also work on mobil
 
 Future developers can use this manual to install, configure, run, and continue development of the Artist Finds application.
 
-[View Developer Manual](docs/DeveloperManual.md)
+[Jump to Developer Manual](#developer-manual)
 ---
 
 # Installation Instructions
@@ -86,7 +86,9 @@ SUPABASE_KEY=your_key_here
 These variables are required for API communication and database access. You must visit the SupaBase database platform as well as the Last.fm and YoutubeData platforms and create accounts in order to access your own variables. The links are attached below:
 
 [Last.fm link](https://www.last.fm/api)
+
 [Supabase link](https://supabase.com/)
+
 [YoutubeData link](https://developers.google.com/youtube/v3)
 
 
