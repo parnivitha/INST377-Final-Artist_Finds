@@ -1,9 +1,13 @@
 const express = require("express");
+const bodyParser = require('body-parser');
 const path = require("path");
 const supabaseClient = require("@supabase/supabase-js");
 
 const app = express();
 const port = 3000;
+
+app.use(bodyParser.json());
+app.use(express.static(__dirname + "/public"));
 
 const LASTFM_API_KEY = process.env.LASTFM_API_KEY;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;

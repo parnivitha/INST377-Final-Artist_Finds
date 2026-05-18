@@ -2,6 +2,14 @@
   "name": "discoverynodeapp",
   "version": "1.0.0",
   "description": "Artist Finds Node Application",
+  "homepage": "https://github.com/parnivitha/INST377-Final-Artist_Finds#readme",
+  "bugs": {
+    "url": "https://github.com/parnivitha/INST377-Final-Artist_Finds/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parnivitha/INST377-Final-Artist_Finds.git"
+  },
   "license": "ISC",
   "author": "Nivitha Paranthaman",
   "type": "commonjs",
@@ -16,5 +24,6 @@
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "nodemon": "^3.1.14"
-  }
+  },
+  "devDependencies": {}
 }
