@@ -1,6 +1,3 @@
-const dotenv = require("dotenv");
-dotenv.config();
-
 const express = require("express");
 const path = require("path");
 const supabaseClient = require("@supabase/supabase-js");
@@ -11,7 +8,7 @@ const port = 3000;
 const LASTFM_API_KEY = process.env.LASTFM_API_KEY;
 const YOUTUBE_API_KEY = process.env.YOUTUBE_API_KEY;
 const SUPABASE_URL = process.env.SUPABASE_URL;
-const SUPABASE_KEY = process.env.SUPABASE_KEY; // Fixed the "proess" typo here!
+const SUPABASE_KEY = process.env.SUPABASE_KEY; 
 
 const supabase = supabaseClient.createClient(SUPABASE_URL, SUPABASE_KEY);
 
@@ -247,8 +244,10 @@ app.use((req, res) => {
   res.status(404).sendFile("public/404.html", { root: __dirname });
 });
 
-app.listen(port, () => {
-  console.log(`Express app listening on port: ${port}`);
-});
+if (process.env.NODE_ENV !== "production") {
+  app.listen(port, () => {
+    console.log(`Express app listening on port: ${port}`);
+  });
+}
 
 module.exports = app;
